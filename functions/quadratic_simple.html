@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset=utf-8>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+    <script type="text/javascript" src="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>
+    <h1 align="center">f(x) = a&middot;x^2 + b&middot;x+c </h1>
+</head>
+
+<body>
+<center>
+    <div id="box" class="jxgbox" style="width:500px; height:500px;"></div>
+</center>
+</body>
+
+</html>
+
+<script type="text/javascript">
+var board = JXG.JSXGraph.initBoard('box', {axis:true, boundingbox: [-5, 5, 5, -5],
+    unitX:1, unitY:1, showCopyright:false});
+board.suspendUpdate();
+
+var a = board.create('slider', [[-4,-2.5],[-1.5,-2.5],[-5,1,5]], {name:'a',snapWidth:0.1});
+var b = board.create('slider', [[-4,-3],[-1.5,-3],[-5,0,5]], {name:'b',snapWidth:0.1});
+var c = board.create('slider', [[-4,-3.5],[-1.5,-3.5],[-5,0,5]], {name:'c',snapWidth:0.1});
+
+var addSign = function(x){
+    if(x<0){
+        return ""+x;
+    } else {
+        return "+"+x;
+    };
+}
+
+var graph = board.create('functiongraph', [
+    function(x) {
+        var val = a.Value()*x*x+b.Value()*x+c.Value();
+        return val;
+    }], {strokeColor: 'green',strokeWidth:3})
+var p = board.create('glider',[2,0,graph],{'name':'',color:'blue'});
+
+
+var text = board.create('text',
+    [1, 4,
+    function(){return "f(x) = "+a.Value().toFixed(2)+"x^2"
+        +addSign(b.Value().toFixed(2))
+        +"x"+addSign(c.Value().toFixed(2))}]
+);
+
+board.unsuspendUpdate();
+
+</script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset=utf-8>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+    <script type="text/javascript" src="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>
+    <h1 align="center">f(x) = a&middot;x+b</h1>
+</head>
+
+<body>
+<center>
+    <div id="box" class="jxgbox" style="width:500px; height:500px;"></div>
+</center>
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+var board = JXG.JSXGraph.initBoard('box', {axis:true, boundingbox: [-1, 5, 6, -2],
+    unitX:1, unitY:1, showCopyright:false});
+board.suspendUpdate();
+
+var a = board.create('slider', [[0.75,-0.5],[3.0,-0.5],[-5,0.5,5]], {name:'a',snapWidth:0.1});
+var b = board.create('slider', [[0.75,-1],[3.0,-1],[-2,1,5]], {name:'b',snapWidth:0.1});
+
+var graph = board.create('functiongraph', [
+    function(x) {
+        var val = a.Value()*x+b.Value();
+        return val;
+    }], {strokeColor: 'green',strokeWidth:3})
+var p = board.create('glider',[5,0,graph],{'name':'',color:'blue'});
+
+
+var text = board.create('text',
+    [1, 4,
+    function(){return "f(x) = "+a.Value().toFixed(2)+"&middot;x+"+b.Value().toFixed(2)}]
+);
+
+board.unsuspendUpdate();
+
+</script>
