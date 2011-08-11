@@ -1,0 +1,19 @@
+This project contains a few interactive webpages that I build using jsxgraph.
+
+Each is meant to pose a riddle to the students. As an example the students could examine graphs of functions of the form f(x) = a*x+b and try to guess how the constants a and b determine the shape of the graph.
+
+Later on they could examine the following functions
+
+f(x) = a^x
+f(x) = b*a^x
+f(x) = x^a
+f(x) = b*x^a
+f(x) = a*x^2+b*x+c
+f(x) = a*(x-p)^2+q
+f(x) = a*(x-r)*(x-s)
+
+The interactive website can be used in combination with the sections on eksperimental matematics in the Danish math book system named "Gyldendals Gymnasiematematik".
+
+Jsxgraph is a wonderful toolkit to toy with. You should try it out yourself.
+http://jsxgraph.uni-bayreuth.de/wiki/index.php/Main_Page
+
