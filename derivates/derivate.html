@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset=utf-8>
+
+<!-- Based on http://jsxgraph.uni-bayreuth.de/wiki/index.php/Even_simpler_function_plotter -->
+
+<head>
+    <link rel="stylesheet" type="text/css" href="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+    <script type="text/javascript" src="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>
+    <h1 align="center"> Plot a function and examine the differential quotients</h1>
+</head>
+
+<body>
+    <center>
+    <input type="text" id="input" value="x^2">
+    <input type="button" value="plot" onClick="plotter()">
+    <div id="box" class="jxgbox" style="width:500px; height:500px;"></div>
+    </center>
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+
+var clearBoard = function(){
+    var board = JXG.JSXGraph.initBoard('box', {axis:true, boundingbox: [-5, 9, 5, -1],
+        unitX:1, unitY:1, showCopyright:false});
+    return board
+}
+var board = clearBoard();
+board.suspendUpdate();
+
+var addSign = function(x){
+    if(x<0){
+        return ""+x;
+    } else {
+        return "+"+x;
+    };
+}
+
+function plotter() {
+    JXG.JSXGraph.freeBoard(board);
+    board = clearBoard();
+    var txtraw = document.getElementById('input').value;
+    var txt = JXG.GeonextParser.geonext2JS(txtraw);
+    var f = new Function('x','var y = '+txt+'; return y;');
+    var curve = board.create('functiongraph',[f,
+        function(){
+            var c = new JXG.Coords(JXG.COORDS_BY_SCREEN,[0,0],board);
+            return c.usrCoords[1];
+        },
+        function(){
+            var c = new JXG.Coords(JXG.COORDS_BY_SCREEN,[board.canvasWidth,0],board);
+            return c.usrCoords[1];
+        }
+        ],{name:txtraw, withLabel:true,strokeColor: 'green',strokeWidth:3});
+    var P = board.create('glider',[1, 0, curve],{'name':'',color:'blue'});
+    var Q = board.create('glider',[2, 0, curve],{'name':'',color:'blue'});
+    var tangent = board.createElement('line', [P,Q],{color:'black'});
+    var  text = board.create('text',
+        [Q.X(), Q.Y()+1,
+        function(){
+            if (P.X() == Q.X()){
+                return "";;
+            } else {
+                var a = (P.Y()-Q.Y())/(P.X()-Q.X());
+                var b = P.Y()-a*P.X();
+                return " y= "+a.toFixed(5)+"x"+addSign(b.toFixed(5));
+            }
+        }]
+    );
+}
+plotter()
+
+
+//var text = board.create('text',
+//    [1, 4,
+//    function(){return "f(x) = "}]
+//);
+
+board.unsuspendUpdate();
+
+</script>
