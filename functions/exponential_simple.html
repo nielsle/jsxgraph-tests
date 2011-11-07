@@ -21,7 +21,7 @@
 
 <script type="text/javascript">
 
-var board = JXG.JSXGraph.initBoard('box', {axis:true, boundingbox: [-1, 5, 6, -2],
+var board = JXG.JSXGraph.initBoard('box', {axis:true, boundingbox: [-5, 8, 5, -2],
     unitX:1, unitY:1, showCopyright:false});
 board.suspendUpdate();
 
@@ -31,8 +31,9 @@ var graph = board.create('functiongraph', [
     function(x) {
         var val = Math.pow(a.Value(),x);
         return val;
-    }, 0], {strokeColor: 'green',strokeWidth:3})
-var p = board.create('glider',[5,0,graph],{'name':'',color:'blue'});
+    }, -5, 5], {strokeColor: 'green',strokeWidth:3})
+    
+var p = board.create('glider',[4,0,graph],{'name':'',color:'blue'});
 
 
 var text = board.create('text',
