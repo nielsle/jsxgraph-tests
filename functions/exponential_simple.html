@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
     <script type="text/javascript" src="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>
 
-<h1 align=center>f(x) = x^a</h1>
+<h1 align=center>f(x) = a<sup>x</sup></h1>
 </head>
 
 
@@ -37,7 +37,7 @@ var p = board.create('glider',[5,0,graph],{'name':'',color:'blue'});
 
 var text = board.create('text',
     [1, 4,
-    function(){return "f(x) = "+a.Value().toFixed(2)+"^x"}]
+    function(){return "f(x) = "+a.Value().toFixed(2)+"<sup>x</sup>"}]
 );
 
 board.unsuspendUpdate();

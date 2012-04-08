@@ -5,7 +5,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
     <script type="text/javascript" src="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>
-    <h1 align="center">f(x) = b&middot;x^a</h1>
+    <h1 align="center">f(x) = b&middot;x<sup>a</sup></h1>
 </head>
 
 <body>
@@ -40,7 +40,7 @@ var addPar = function(x){
 }
 var text = board.create('text',
     [1, 4,
-    function(){return "f(x) = "+b.Value().toFixed(2)+"&middot;x^"+addPar(a.Value().toFixed(2))}]
+    function(){return "f(x) = "+b.Value().toFixed(2)+"&middot;x<sup>"+a.Value().toFixed(2) + "</sup>"}]
 );
 
 board.unsuspendUpdate();

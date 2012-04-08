@@ -5,7 +5,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
     <script type="text/javascript" src="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>
-    <h1 align="center">f(x) = a&middot;x^2 + b&middot;x+c </h1>
+    <h1 align="center">f(x) = a&middot;x<sup>2</sup> + b&middot;x+c </h1>
 </head>
 
 <body>
@@ -43,7 +43,7 @@ var p = board.create('glider',[2,0,graph],{'name':'',color:'blue'});
 
 var text = board.create('text',
     [1, 4,
-    function(){return "f(x) = "+a.Value().toFixed(2)+"x^2"
+    function(){return "f(x) = "+a.Value().toFixed(2)+"x<sup>2</sup>"
         +addSign(b.Value().toFixed(2))
         +"x"+addSign(c.Value().toFixed(2))}]
 );
