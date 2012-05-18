@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset=utf-8>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+    <link rel="stylesheet" type="text/css" href="jsxgraph-tests.css" />
+
+    <script type="text/javascript" src="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>
+
+    <h1 align="center"><a href="index.html">f(x) = 
+    a<sub>4</sub>&middot;x<sup>4</sup> + a<sub>3</sub>&middot;x<sup>3</sup> + a<sub>2</sub>&middot;x<sup>2</sup> + a<sub>1</sub>&middot;x+a<sub>0</sub></a> 
+    </h1>
+</head>
+
+<body>
+<center>
+    <div id="box" class="jxgbox" style="width:500px; height:500px;"></div>
+</center>
+</body>
+
+</html>
+
+<script type="text/javascript">
+var board = JXG.JSXGraph.initBoard('box', {axis:true, boundingbox: [-10, 10, 10, -10],
+    unitX:1, unitY:1, showCopyright:false});
+board.suspendUpdate();
+
+var a0 = board.create('slider', [[-8,-5],[-3,-5],[-5,1,5]], {name:'a0',snapWidth:0.1});
+var a1 = board.create('slider', [[-8,-6],[-3,-6],[-5,1,5]], {name:'a1',snapWidth:0.1});
+var a2 = board.create('slider', [[-8,-7],[-3,-7],[-5,1,5]], {name:'a2',snapWidth:0.1});
+var a3 = board.create('slider', [[-8,-8],[-3,-8],[-2,1,2]], {name:'a3',snapWidth:0.1});
+var a4 = board.create('slider', [[-8,-9],[-3,-9],[-0.5,0.5,0.5]], {name:'a4',snapWidth:0.1});
+
+var addSign = function(x){
+    if(x<0){
+        return ""+x;
+    } else {
+        return "+"+x;
+    };
+}
+
+var graph = board.create('functiongraph', [
+    function(x) {
+        var val = a4.Value()*x*x*x*x+a3.Value()*x*x*x+a2.Value()*x*x+a1.Value()*x+a0.Value();
+        return val;
+    }], {strokeColor: 'green',strokeWidth:3})
+var p = board.create('glider',[2,0,graph],{'name':'',color:'blue'});
+
+
+var text = board.create('text',
+    [1, 4,
+    function(){return "f(x) = "
+    +a4.Value().toFixed(2)+"x<sup>4</sup>"
+    +addSign(a3.Value().toFixed(2))+"x<sup>3</sup>"
+    +addSign(a2.Value().toFixed(2))+"x<sup>2</sup>"
+    +addSign(a1.Value().toFixed(2))+"x"
+    +addSign(a0.Value().toFixed(2))}]
+);
+
+board.unsuspendUpdate();
+
+</script>
