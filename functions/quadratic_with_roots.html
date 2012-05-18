@@ -8,7 +8,7 @@
 
     <script type="text/javascript" src="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>
 
-    <h1 align="center"><a href="index.html">f(x)=a(x-r)(x-s)</a></h1>
+    <h1 align="center"><a href="index.html">f(x)=a&middot;(x-r)&middot;(x-s)</a></h1>
 </head>
 
 <body>
@@ -46,8 +46,8 @@ var p = board.create('glider',[2,0,graph],{'name':'',color:'blue'});
 var text = board.create('text',
     [1, 4,
     function(){return "f(x) = "+a.Value().toFixed(2)+
-        "(x"+addSign(-r.Value().toFixed(2))+")"+
-        "(x"+addSign(-s.Value().toFixed(2))+")"}]
+        "&middot;(x"+addSign(-r.Value().toFixed(2))+")"+
+        "&middot;(x"+addSign(-s.Value().toFixed(2))+")"}]
 );
 
 board.unsuspendUpdate();
