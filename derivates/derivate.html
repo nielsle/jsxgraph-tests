@@ -24,8 +24,8 @@
 
 
 var clearBoard = function(){
-    var board = JXG.JSXGraph.initBoard('box', {axis:true, boundingbox: [-5, 9, 5, -1],
-        unitX:1, unitY:1, showCopyright:false});
+    var board = JXG.JSXGraph.initBoard('box', {axis:true,  
+    originX: 250, originY: 250, unitX: 25, unitY: 25, showCopyright:false});
     return board
 }
 var board = clearBoard();
@@ -44,7 +44,8 @@ function plotter() {
     board = clearBoard();
     var txtraw = document.getElementById('input').value;
     var txt = JXG.GeonextParser.geonext2JS(txtraw);
-    var f = new Function('x','var y = '+txt+'; return y;');
+    //var f = new Function('x','var y = '+txt+'; return y;'); 
+    f = board.jc.snippet(txt, true, 'x', true);
     var curve = board.create('functiongraph',[f,
         function(){
             var c = new JXG.Coords(JXG.COORDS_BY_SCREEN,[0,0],board);

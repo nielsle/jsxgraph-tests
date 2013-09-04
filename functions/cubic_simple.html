@@ -22,8 +22,8 @@
 </html>
 
 <script type="text/javascript">
-var board = JXG.JSXGraph.initBoard('box', {axis:true, boundingbox: [-10, 10, 10, -10],
-    unitX:1, unitY:1, showCopyright:false});
+var board = JXG.JSXGraph.initBoard('box', {axis:true,  
+    originX: 250, originY: 250, unitX: 25, unitY: 25, showCopyright:false});
 board.suspendUpdate();
 
 var a0 = board.create('slider', [[-8,-5],[-3,-5],[-5,1,5]], {name:'a0',snapWidth:0.1});

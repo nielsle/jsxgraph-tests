@@ -21,8 +21,8 @@
 
 <script type="text/javascript">
 
-var board = JXG.JSXGraph.initBoard('box', {axis:true, boundingbox: [-1, 5, 6, -2],
-    unitX:1, unitY:1, showCopyright:false});
+var board = JXG.JSXGraph.initBoard('box', {axis:true, 
+     originX: 100, originY: 400, unitX: 50, unitY: 50,  showCopyright:false});
 board.suspendUpdate();
 
 var a = board.create('slider', [[0.75,-0.5],[3.0,-0.5],[-1,0.5,5]], {name:'a',snapWidth:0.1});
