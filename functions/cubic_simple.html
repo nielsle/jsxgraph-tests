@@ -22,15 +22,25 @@
 </html>
 
 <script type="text/javascript">
-var board = JXG.JSXGraph.initBoard('box', {axis:true,  
-    originX: 250, originY: 250, unitX: 25, unitY: 25, showCopyright:false});
+var board = JXG.JSXGraph.initBoard('box', {
+    axis:false,
+    showCopyright:false,
+    originX: 250,
+    originY: 250,
+    unitX: 25,
+    unitY: 25});
+var ax = board.create('axis', [[0, 0], [1, 0]], {ticks: {
+    ticksDistance: 1, 
+    insertTicks: false}});
+var ay = board.create('axis', [[0, 0], [0, 1]], {ticks: {
+    ticksDistance: 1, 
+    insertTicks: false}});
 board.suspendUpdate();
 
 var a0 = board.create('slider', [[-8,-5],[-3,-5],[-5,1,5]], {name:'a0',snapWidth:0.1});
 var a1 = board.create('slider', [[-8,-6],[-3,-6],[-5,1,5]], {name:'a1',snapWidth:0.1});
 var a2 = board.create('slider', [[-8,-7],[-3,-7],[-5,1,5]], {name:'a2',snapWidth:0.1});
 var a3 = board.create('slider', [[-8,-8],[-3,-8],[-2,1,2]], {name:'a3',snapWidth:0.1});
-
 
 var addSign = function(x){
     if(x<0){

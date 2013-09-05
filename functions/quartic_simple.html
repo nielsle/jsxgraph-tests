@@ -22,8 +22,19 @@
 </html>
 
 <script type="text/javascript">
-var board = JXG.JSXGraph.initBoard('box', {axis:true, 
-     originX: 250, originY: 250, unitX: 25, unitY: 25,  showCopyright:false});
+var board = JXG.JSXGraph.initBoard('box', {
+    axis:false,
+    showCopyright:false,
+    originX: 250,
+    originY: 250,
+    unitX: 25,
+    unitY: 25});
+var ax = board.create('axis', [[0, 0], [1, 0]], {ticks: {
+    ticksDistance: 1, 
+    insertTicks: false}});
+var ay = board.create('axis', [[0, 0], [0, 1]], {ticks: {
+    ticksDistance: 1, 
+    insertTicks: false}});
 board.suspendUpdate();
 
 var a0 = board.create('slider', [[-8,-5],[-3,-5],[-5,1,5]], {name:'a0',snapWidth:0.1});

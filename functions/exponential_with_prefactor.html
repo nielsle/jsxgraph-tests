@@ -11,7 +11,6 @@
     <h1 align="center"><a href="index.html">f(x) = b&middot;a<sup>x</sup></a></h1>
 </head>
 
-
 <body>
 <center>
     <div id="box" class="jxgbox" style="width:500px; height:500px;"></div>
@@ -21,9 +20,19 @@
 </html>
 
 <script type="text/javascript">
-
-var board = JXG.JSXGraph.initBoard('box', {axis:true, 
-     originX: 100, originY: 400, unitX: 50, unitY: 50,  showCopyright:false});
+var board = JXG.JSXGraph.initBoard('box', {
+    axis:false,
+    showCopyright:false,
+    originX: 100,
+    originY: 400,
+    unitX: 50,
+    unitY: 50});
+var ax = board.create('axis', [[0, 0], [1, 0]], {ticks: {
+    ticksDistance: 1, 
+    insertTicks: false}});
+var ay = board.create('axis', [[0, 0], [0, 1]], {ticks: {
+    ticksDistance: 1, 
+    insertTicks: false}});
 board.suspendUpdate();
 
 var a = board.create('slider', [[0.75,-0.5],[3.0,-0.5],[0,0.5,5]], {name:'a',snapWidth:0.1});
