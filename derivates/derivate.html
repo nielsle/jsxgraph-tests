@@ -63,7 +63,7 @@ function plotter() {
             var c = new JXG.Coords(JXG.COORDS_BY_SCREEN,[board.canvasWidth,0],board);
             return c.usrCoords[1];
         }
-        ],{name:txtraw, withLabel:true,strokeColor: 'green',strokeWidth:3});
+        ],{name:txtraw, withLabel:false,strokeColor: 'green',strokeWidth:3});
     var P = board.create('glider',[1, 0, curve],{'name':'',color:'blue'});
     var Q = board.create('glider',[2, 0, curve],{'name':'',color:'blue'});
     var tangent = board.createElement('line', [P,Q],{color:'black'});
