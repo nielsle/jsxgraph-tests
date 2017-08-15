@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<meta charset=utf-8>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+    <script type="text/javascript" src="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>
+
+    <h1 align="center"><a href="index.html">f(x) = a&middot;x<sup>2</sup> + b&middot;x+c</a> </h1>
+</head>
+
+<body>
+<center>
+    <div id="box" class="jxgbox" style="width:500px; height:500px;"></div>
+<p>
+
+<form name="level">
+<p>
+<select onchange="reload()" id="level" size="1">
+   <option VALUE="1"> Level 1 </option>
+   <option VALUE="2"> Level 2 </option>
+   <option VALUE="3"> Level 3 </option>
+   <option VALUE="4"> Level 4 </option>
+   <option VALUE="5"> Level 5 </option>
+</select>
+<input type="button" value="Try again" onClick="reload()">
+
+
+</p>
+</form>
+
+
+</center>
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+
+var addSign = function(x){
+    if(x<0){
+        return ""+x;
+    } else {
+        return "+"+x;
+    };
+}
+
+function reload() {
+
+    var level = document.getElementById("level").value;
+
+
+    var board = JXG.JSXGraph.initBoard('box', {
+        axis:false,
+        showCopyright:false,
+        originX: 250,
+        originY: 250,
+        unitX: 50,
+        unitY: 50});
+    var ax = board.create('axis', [[0, 0], [1, 0]], {ticks: {
+        ticksDistance: 1, 
+        insertTicks: false}});
+    var ay = board.create('axis', [[0, 0], [0, 1]], {ticks: {
+        ticksDistance: 1, 
+        insertTicks: false}});
+
+
+    var a_sol = 0.1*Math.round(10*(Math.random()-0.5));
+    var b_sol = 0.1*Math.round(10*(Math.random()-0.5));
+    var c_sol = 0.1*Math.round(10*(Math.random()-0.5));
+
+    for (var xi=-5;xi < 5;xi++) {
+        var yi = a_sol*xi*xi + b_sol*xi+ c_sol;
+       var p = board.createElement('point', [xi,yi],{size:3, withLabel:false});
+    }
+
+
+    if (level == 5) {
+
+        var a = board.create('slider', [[-4,-2.5],[-1.5,-2.5],[-5,1,5]], {name:'a',snapWidth:0.1});
+        var b = board.create('slider', [[-4,-3],[-1.5,-3],[-5,0,5]], {name:'b',snapWidth:0.1});
+        var c = board.create('slider', [[-4,-3.5],[-1.5,-3.5],[-5,0,5]], {name:'c',snapWidth:0.1});
+ 
+        var text = board.create('text',[1, 4, function() { 
+            return "f(x) = " + a.Value().toFixed(2)+"x<sup>2</sup>"
+                             + addSign(b.Value().toFixed(2)) +"x"
+                             + addSign(c.Value().toFixed(2))}]
+        );
+
+        board.suspendUpdate();
+        var graph = board.create('functiongraph', [ function(x) {
+            var val = a.Value()*x*x+b.Value()*x+c.Value();
+            return val;
+        }], {strokeColor: 'green',strokeWidth:3});
+        board.unsuspendUpdate();
+
+
+
+    } else if (level == 4) {
+
+        var b = board.create('slider', [[-4,-2.5],[-1.5,-2.5],[-5,1,5]], {name:'b',snapWidth:0.1});
+ 
+        var text = board.create('text',[1, 4, function() { 
+            return "f(x) = " + a_sol.toFixed(2)+"x<sup>2</sup>"
+                             + addSign(b.Value().toFixed(2))+"x"
+                             + addSign(c_sol.toFixed(2))}]
+        );
+
+        board.suspendUpdate();
+        var graph = board.create('functiongraph', [ function(x) {
+            var val = a_sol*x*x+b.Value()*x+c_sol;
+            return val;
+        }], {strokeColor: 'green',strokeWidth:3});
+        board.unsuspendUpdate();
+
+
+    } else if (level == 3) {
+
+        var a = board.create('slider', [[-4,-2.5],[-1.5,-2.5],[-5,1,5]], {name:'a',snapWidth:0.1});
+        var c = board.create('slider', [[-4,-3],[-1.5,-3],[-5,0,5]], {name:'c',snapWidth:0.1});
+ 
+        var text = board.create('text',[1, 4, function() { 
+            return "f(x) = " + a.Value().toFixed(2)+"x<sup>2</sup>"
+                             + addSign(b_sol.toFixed(2)) +"x"
+                             + addSign(c.Value().toFixed(2))}]
+        );
+
+        board.suspendUpdate();
+        var graph = board.create('functiongraph', [ function(x) {
+            var val = a.Value()*x*x+b_sol*x+c.Value();
+            return val;
+        }], {strokeColor: 'green',strokeWidth:3});
+        board.unsuspendUpdate();
+
+
+    } else if (level == 2) {
+
+        var a = board.create('slider', [[-4,-2.5],[-1.5,-2.5],[-5,1,5]], {name:'a',snapWidth:0.1});
+ 
+        var text = board.create('text',[1, 4, function() { 
+            return "f(x) = " + a.Value().toFixed(2)+"x<sup>2</sup>"
+                             + addSign(b_sol.toFixed(2)) +"x"
+                             + addSign(c_sol.toFixed(2))}]
+        );
+
+        board.suspendUpdate();
+        var graph = board.create('functiongraph', [ function(x) {
+            var val = a.Value()*x*x+b_sol*x+c_sol;
+            return val;
+        }], {strokeColor: 'green',strokeWidth:3});
+        board.unsuspendUpdate();
+
+
+    } else if (level == 1) {
+
+        var c = board.create('slider', [[-4,-2.5],[-1.5,-2.5],[-5,1,5]], {name:'c',snapWidth:0.1});
+ 
+        var text = board.create('text',[1, 4, function() { 
+            return "f(x) = " + a_sol.toFixed(2)+"x<sup>2</sup>"
+                             + addSign(b_sol.toFixed(2))+"x"
+                             + addSign(c.Value().toFixed(2))}]
+        );
+
+        board.suspendUpdate();
+        var graph = board.create('functiongraph', [ function(x) {
+            var val = a_sol*x*x+b_sol*x+c.Value();
+            return val;
+        }], {strokeColor: 'green',strokeWidth:3});
+        board.unsuspendUpdate();
+
+
+    } else {
+
+	alert("Illegal level "+level)
+    }
+
+}
+reload();
+
+
+</script>

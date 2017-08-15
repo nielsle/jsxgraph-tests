@@ -10,6 +10,7 @@ Each page allow the students examine a family of functions and try to guess how 
 * [f(x) = a&middot;x^2+b&middot;x+c](http://nielsle.github.com/jsxgraph-tests/functions/quadratic_simple.html)
 * [f(x) = a&middot;(x-p)^2+q](http://nielsle.github.com/jsxgraph-tests/functions/quadratic_with_toppoint.html)
 * [f(x) = a&middot;(x-r)&middot;(x-s)](http://nielsle.github.com/jsxgraph-tests/functions/quadratic_with_roots.html)
+* [f(x) = a&middot;x^2+b&middot;x+c](http://nielsle.github.com/jsxgraph-tests/functions/experimental_intro_to_polynomia.html)
 * [f(x) = a&middot;x^2+b&middot;x+c and g(x)=b&middot;x+c](http://nielsle.github.com/jsxgraph-tests/functions/quadratic_with_tangent.html)
 
 The webpages were designed to be compatible with the sections on eksperimental mathematics in the Danish math book system named "Gyldendals Gymnasiematematik".
